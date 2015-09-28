@@ -1,4 +1,4 @@
-# Go HTTPS Server and Client with Mutual Authentication
+## Go HTTPS Server and Client with Mutual Authentication
 A skeleton HTTPS client and server that supports: no authentication (HTTP), server-side authentication (standard HTTPS), mutual authentication.
 
 Used to test [symbios](https://github.com/dnascimento/symbios)
