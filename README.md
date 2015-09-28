@@ -20,7 +20,7 @@ http-server  <port> <key.pem> <cert.pem>
 
 ### Mutual Authentication
 ```
-http-client  <endpoint> <ca.pem> <cert.pem> <key.pem>
+http-client  <endpoint> <key.pem> <cert.pem> <ca.pem> 
 http-server  <port> <key.pem> <cert.pem> <ca.pem>
 
 ```

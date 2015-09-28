@@ -28,15 +28,15 @@ func main() {
 		client = HTTPSClient(root)
 	case 5:
 		endpoint = os.Args[1]
-		root = os.Args[2]
+		key = os.Args[2]
 		cert = os.Args[3]
-		key = os.Args[4]
+		root = os.Args[4]
 		client = HTTPSMutual(root, cert, key)
 	default:
 		fmt.Println("HTTP server with 3 modes: No Authentication, HTTPS server-side only, HTTPS mutual")
 		fmt.Println("no authentication usage: http-client  <endpoint>")
 		fmt.Println("https server-side usage: http-client  <endpoint> <ca.pem>")
-		fmt.Println("https mutual usage     : http-client  <endpoint> <ca.pem> <cert.pem> <key.pem>")
+		fmt.Println("https mutual usage     : http-client  <endpoint> <key.pem> <cert.pem> <ca.pem>")
 		os.Exit(2)
 	}
 
@@ -107,9 +107,10 @@ func get(endpoint string, client *http.Client) {
 	defer res.Body.Close()
 	data, err := ioutil.ReadAll(res.Body)
 
-	fmt.Println(res.Status)
+	log.Printf("Status %s \n", res.Status)
 	response := string(data)
-	if res.Status != "200 OK" || response != "Hello Buddy!\n" {
-		log.Fatal(response)
+	if res.Status != "200 OK" {
+		log.Fatalf("Status not 200: %s", response)
 	}
+	log.Println(response)
 }
